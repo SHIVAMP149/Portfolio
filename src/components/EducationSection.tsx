@@ -26,6 +26,28 @@ const education = [
       "School prefect and tech club leader",
       "Won multiple programming competitions"
     ]
+  },
+  {
+    degree: "Matriculation",
+    institution: "Sanatan Dharma Public School",
+    period: "April 2020 - March 2021",
+    location: "Delhi, India",
+    achievements: [
+      "Percentage: 73.6%",
+      "Active in extracurricular activities",
+      "Participated in coding competitions"
+    ]
+  },
+  {
+    degree: "Intermediate",
+    institution: "Sanatan Dharma Public School",
+    period: "April 2018 - March 2019",
+    location: "Delhi, India",
+    achievements: [
+      "Percentage: 79.8%",
+      "Member of the science club",
+      "Participated in science exhibitions"
+    ]
   }
 ];
 
@@ -36,9 +58,10 @@ const EducationSection = () => {
   });
   
   const { theme } = useTheme();
+  const isDark = theme === 'dark';
 
   return (
-    <section id="education" className={theme === 'dark' ? "py-20 bg-gray-900/50" : "py-20 bg-gray-100"}>
+    <section id="education" className={isDark ? "py-20 bg-gray-900/50" : "py-20 bg-gray-100"}>
       <div 
         ref={ref}
         className={cn(
@@ -64,15 +87,15 @@ const EducationSection = () => {
               }}
             >
               <div className="transition-all duration-300 group-hover:transform group-hover:translate-y-[-8px]">
-                <h3 className={`text-xl font-semibold mb-2 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
+                <h3 className={`text-xl font-semibold mb-2 ${isDark ? 'text-white' : 'text-gray-800'}`}>
                   {edu.degree}
                 </h3>
                 <p className="text-theme-purple mb-2">{edu.institution}</p>
-                <p className={`text-sm mb-4 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+                <p className={`text-sm mb-4 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                   {edu.period} • {edu.location}
                 </p>
                 
-                <ul className={`list-disc list-inside text-sm space-y-1 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                <ul className={`list-disc list-inside text-sm space-y-1 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                   {edu.achievements.map((achievement, i) => (
                     <li key={i}>{achievement}</li>
                   ))}

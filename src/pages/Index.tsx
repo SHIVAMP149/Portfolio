@@ -12,13 +12,14 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   const { theme } = useTheme();
+  const isDark = theme === 'dark';
 
   useEffect(() => {
     document.title = "Shivam Prakash | Portfolio";
   }, []);
 
   return (
-    <div className={`min-h-screen ${theme === 'dark' ? 'bg-theme-dark text-white' : 'bg-white text-gray-900'}`}>
+    <div className={`min-h-screen ${isDark ? 'bg-theme-dark text-white' : 'bg-white text-gray-900'}`}>
       <Navbar />
       <HeroSection />
       <AboutSection />

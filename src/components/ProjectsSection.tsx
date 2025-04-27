@@ -2,6 +2,8 @@
 import { useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { useInView } from 'react-intersection-observer';
+import { useTheme } from '@/contexts/ThemeContext';
+import { Briefcase } from 'lucide-react';
 
 interface Project {
   title: string;
@@ -53,8 +55,11 @@ const ProjectsSection = () => {
     threshold: 0.1,
   });
 
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
+
   return (
-    <section id="projects" className="py-20 bg-gray-900">
+    <section id="projects" className={isDark ? "py-20 bg-gray-900" : "py-20 bg-gray-100"}>
       <div 
         ref={ref} 
         className={cn(
@@ -62,7 +67,10 @@ const ProjectsSection = () => {
           inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         )}
       >
-        <h2 className="section-title">My Projects</h2>
+        <h2 className="section-title">
+          <Briefcase className="inline-block mr-2 h-8 w-8" />
+          My Projects
+        </h2>
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12">
           {projects.map((project, index) => (
@@ -77,21 +85,21 @@ const ProjectsSection = () => {
               }}
             >
               <div className="flex flex-col h-full">
-                <h3 className="text-xl font-semibold mb-2 text-white">{project.title}</h3>
+                <h3 className={`text-xl font-semibold mb-2 ${isDark ? 'text-white' : 'text-gray-800'}`}>{project.title}</h3>
                 <p className="text-theme-purple text-sm mb-4">{project.period}</p>
-                <p className="text-gray-300 mb-4">{project.description}</p>
+                <p className={`${isDark ? 'text-gray-300' : 'text-gray-600'} mb-4`}>{project.description}</p>
                 
                 <div className="mb-4 flex-grow">
-                  <h4 className="text-sm font-semibold text-white mb-2">Key Achievements:</h4>
-                  <ul className="list-disc list-inside text-gray-300 text-sm space-y-1">
+                  <h4 className={`text-sm font-semibold ${isDark ? 'text-white' : 'text-gray-800'} mb-2`}>Key Achievements:</h4>
+                  <ul className={`list-disc list-inside ${isDark ? 'text-gray-300' : 'text-gray-600'} text-sm space-y-1`}>
                     {project.achievements.map((achievement, i) => (
-                      <li key={i} className="text-gray-300">{achievement}</li>
+                      <li key={i}>{achievement}</li>
                     ))}
                   </ul>
                 </div>
                 
                 <div className="mt-auto">
-                  <h4 className="text-sm font-semibold text-white mb-2">Tech Stack:</h4>
+                  <h4 className={`text-sm font-semibold ${isDark ? 'text-white' : 'text-gray-800'} mb-2`}>Tech Stack:</h4>
                   <div className="flex flex-wrap gap-2">
                     {project.techStack.map((tech) => (
                       <span 
