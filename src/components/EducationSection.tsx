@@ -7,24 +7,13 @@ import { useTheme } from '@/contexts/ThemeContext';
 const education = [
   {
     degree: "B.Tech in Computer Science",
-    institution: "National Institute of Technology",
-    period: "2020 - 2024",
-    location: "Karnataka, India",
+    institution: "Lovely Professional Univeristy",
+    period: "2022 - Present",
+    location: "Punjab, India",
     achievements: [
-      "Maintained a CGPA of 8.5/10",
+      "Maintained a CGPA of 7.33/10",
       "Active member of the Coding Club",
       "Led multiple hackathon teams"
-    ]
-  },
-  {
-    degree: "Higher Secondary Education",
-    institution: "Delhi Public School",
-    period: "2018 - 2020",
-    location: "New Delhi, India",
-    achievements: [
-      "Graduated with 95% marks",
-      "School prefect and tech club leader",
-      "Won multiple programming competitions"
     ]
   },
   {

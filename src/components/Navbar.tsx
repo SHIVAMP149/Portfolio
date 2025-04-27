@@ -26,7 +26,7 @@ const Navbar = () => {
         setBackToTopVisible(false);
       }
 
-      const sections = ['home', 'about', 'skills', 'projects', 'contact'];
+      const sections = ['home', 'about', 'skills', 'projects','education', 'contact'];
       let current = 'home';
 
       for (const section of sections) {
@@ -51,6 +51,7 @@ const Navbar = () => {
     { name: 'About', id: 'about' },
     { name: 'Skills', id: 'skills' },
     { name: 'Projects', id: 'projects' },
+    { name: 'Education', id: 'education' },
     { name: 'Contact', id: 'contact' },
   ];
 
@@ -111,7 +112,7 @@ const Navbar = () => {
                 {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
               </button>
               <a
-                href="/shivam-prakash-resume.pdf"
+                href="/updatedCv.pdf"
                 className="flex items-center gap-2 ml-4 bg-theme-purple hover:bg-theme-purple-light text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300"
                 download
               >

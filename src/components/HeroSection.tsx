@@ -68,7 +68,7 @@ const HeroSection = () => {
               Get In Touch
             </a>
             <a
-              href="/shivam-prakash-resume.pdf"
+              href="/updatedCv.pdf"
               className={`px-6 py-3 bg-transparent border border-theme-purple rounded-full font-medium transition-colors duration-300 flex items-center gap-2 ${
                 isDark ? 'text-theme-purple hover:bg-theme-purple/10' : 'text-theme-purple hover:bg-theme-purple/10'
               }`}
