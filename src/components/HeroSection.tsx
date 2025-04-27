@@ -1,9 +1,11 @@
-
 import { Download } from 'lucide-react';
 import { useEffect, useRef } from 'react';
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { useTheme } from "@/contexts/ThemeContext";
 
 const HeroSection = () => {
   const particlesContainerRef = useRef<HTMLDivElement>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     // Create particle effect
@@ -46,7 +48,12 @@ const HeroSection = () => {
       
       <div className="section-container relative z-10">
         <div className="flex flex-col items-center text-center animate-fade-in">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white tracking-tight">
+          <Avatar className="w-32 h-32 mb-8">
+            <AvatarImage src="/lovable-uploads/93504ae2-602e-482e-a1d7-ddefb1f8d983.png" alt="Shivam Prakash" />
+            <AvatarFallback>SP</AvatarFallback>
+          </Avatar>
+          
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white dark:text-gray-900">
             Hi, I'm <span className="text-theme-purple">Shivam Prakash</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 mb-8">Software Developer</p>

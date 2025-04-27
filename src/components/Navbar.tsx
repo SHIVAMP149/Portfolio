@@ -1,10 +1,11 @@
-
 import { useState, useEffect } from 'react';
-import { ArrowUp, Download, Github, Linkedin, Mail, Menu, X } from 'lucide-react';
+import { ArrowUp, Download, Github, Linkedin, Mail, Menu, X, Sun, Moon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { useTheme } from '@/contexts/ThemeContext';
 
 const Navbar = () => {
+  const { theme, toggleTheme } = useTheme();
   const [activeSection, setActiveSection] = useState('home');
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -12,21 +13,18 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Handle navbar background change on scroll
       if (window.scrollY > 50) {
         setScrolled(true);
       } else {
         setScrolled(false);
       }
 
-      // Handle back to top button visibility
       if (window.scrollY > 500) {
         setBackToTopVisible(true);
       } else {
         setBackToTopVisible(false);
       }
 
-      // Handle active section highlighting
       const sections = ['home', 'about', 'skills', 'projects', 'contact'];
       let current = 'home';
 
@@ -68,7 +66,7 @@ const Navbar = () => {
       <nav
         className={cn(
           'fixed w-full z-50 transition-all duration-300 py-4',
-          scrolled ? 'bg-theme-dark/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+          scrolled ? 'bg-theme-dark/95 dark:bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
         )}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -79,7 +77,6 @@ const Navbar = () => {
               </a>
             </div>
 
-            {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-4">
               {navLinks.map((link) => (
                 <a
@@ -93,6 +90,13 @@ const Navbar = () => {
                   {link.name}
                 </a>
               ))}
+              <button
+                onClick={toggleTheme}
+                className="p-2 rounded-full hover:bg-theme-purple/10 transition-colors"
+                aria-label="Toggle theme"
+              >
+                {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+              </button>
               <a
                 href="/shivam-prakash-resume.pdf"
                 className="flex items-center gap-2 ml-4 bg-theme-purple hover:bg-theme-purple-light text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300"
@@ -102,7 +106,6 @@ const Navbar = () => {
               </a>
             </div>
 
-            {/* Mobile Menu Button */}
             <div className="md:hidden">
               <Button
                 variant="ghost"
@@ -116,7 +119,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
         <div
           className={cn(
             'fixed inset-0 bg-theme-dark/95 backdrop-blur-md z-40 flex flex-col items-center justify-center transition-all duration-300 md:hidden',
@@ -171,7 +173,6 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Back to top button */}
       <button
         className={cn(
           'back-to-top',
