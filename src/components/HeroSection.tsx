@@ -1,3 +1,4 @@
+
 import { Download } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
@@ -48,15 +49,15 @@ const HeroSection = () => {
       
       <div className="section-container relative z-10">
         <div className="flex flex-col items-center text-center animate-fade-in">
-          <Avatar className="w-32 h-32 mb-8">
-            <AvatarImage src="/lovable-uploads/93504ae2-602e-482e-a1d7-ddefb1f8d983.png" alt="Shivam Prakash" />
-            <AvatarFallback>SP</AvatarFallback>
+          <Avatar className="w-40 h-40 mb-8 border-4 border-theme-purple shadow-lg">
+            <AvatarImage src="/lovable-uploads/93504ae2-602e-482e-a1d7-ddefb1f8d983.png" alt="Shivam Prakash" className="object-cover" />
+            <AvatarFallback className={theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-gray-200 text-gray-900'}>SP</AvatarFallback>
           </Avatar>
           
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white dark:text-gray-900">
+          <h1 className={`text-4xl md:text-6xl font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
             Hi, I'm <span className="text-theme-purple">Shivam Prakash</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-300 mb-8">Software Developer</p>
+          <p className={`text-xl md:text-2xl mb-8 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Software Developer</p>
           
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             <a
@@ -67,7 +68,9 @@ const HeroSection = () => {
             </a>
             <a
               href="/shivam-prakash-resume.pdf"
-              className="px-6 py-3 bg-transparent border border-theme-purple text-theme-purple rounded-full font-medium hover:bg-theme-purple/10 transition-colors duration-300 flex items-center gap-2"
+              className={`px-6 py-3 bg-transparent border border-theme-purple rounded-full font-medium transition-colors duration-300 flex items-center gap-2 ${
+                theme === 'dark' ? 'text-theme-purple hover:bg-theme-purple/10' : 'text-theme-purple hover:bg-theme-purple/10'
+              }`}
               download
             >
               <Download size={18} /> Download Resume
@@ -79,7 +82,7 @@ const HeroSection = () => {
               href="https://linkedin.com/in/shivamprakash31"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-theme-purple transition-colors duration-300"
+              className={`hover:text-theme-purple transition-colors duration-300 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}
               aria-label="LinkedIn"
             >
               <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -90,7 +93,7 @@ const HeroSection = () => {
               href="https://github.com/SHIVAMP149"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-theme-purple transition-colors duration-300"
+              className={`hover:text-theme-purple transition-colors duration-300 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}
               aria-label="GitHub"
             >
               <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -99,7 +102,7 @@ const HeroSection = () => {
             </a>
             <a
               href="mailto:shivamprakash310702@gmail.com"
-              className="text-gray-400 hover:text-theme-purple transition-colors duration-300"
+              className={`hover:text-theme-purple transition-colors duration-300 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}
               aria-label="Email"
             >
               <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -112,7 +115,7 @@ const HeroSection = () => {
 
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
         <a href="#about" aria-label="Scroll down">
-          <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg className={`w-6 h-6 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
         </a>

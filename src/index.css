@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
@@ -61,6 +62,10 @@
     @apply bg-theme-dark text-foreground font-sans antialiased;
   }
 
+  body.light {
+    @apply bg-white text-gray-900;
+  }
+
   html {
     @apply scroll-smooth;
   }
@@ -72,7 +77,15 @@
   }
   
   .section-title {
-    @apply text-3xl sm:text-4xl font-bold mb-8 text-white relative inline-block;
+    @apply text-3xl sm:text-4xl font-bold mb-8 relative inline-block;
+  }
+  
+  .dark .section-title {
+    @apply text-white;
+  }
+  
+  .light .section-title {
+    @apply text-gray-900;
   }
   
   .section-title::after {
@@ -81,11 +94,27 @@
   }
   
   .glass-card {
-    @apply bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl shadow-lg;
+    @apply backdrop-blur-sm border rounded-xl shadow-lg;
+  }
+  
+  .dark .glass-card {
+    @apply bg-white/5 border-white/10;
+  }
+  
+  .light .glass-card {
+    @apply bg-gray-50 border-gray-200;
   }
 
   .skill-progress-bar {
-    @apply h-2 bg-gray-700 rounded-full overflow-hidden;
+    @apply h-2 rounded-full overflow-hidden;
+  }
+  
+  .dark .skill-progress-bar {
+    @apply bg-gray-700;
+  }
+  
+  .light .skill-progress-bar {
+    @apply bg-gray-200;
   }
 
   .skill-progress {
@@ -93,7 +122,15 @@
   }
 
   .nav-link {
-    @apply px-3 py-2 text-sm font-medium text-white/80 hover:text-theme-purple transition-colors duration-300;
+    @apply px-3 py-2 text-sm font-medium transition-colors duration-300;
+  }
+  
+  .dark .nav-link {
+    @apply text-white/80 hover:text-theme-purple;
+  }
+  
+  .light .nav-link {
+    @apply text-gray-700 hover:text-theme-purple;
   }
   
   .nav-link-active {
@@ -101,7 +138,15 @@
   }
 
   .contact-input {
-    @apply w-full rounded-lg p-3 bg-white/5 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-theme-purple/50 focus:border-transparent transition-all duration-300;
+    @apply w-full rounded-lg p-3 border focus:outline-none focus:ring-2 focus:ring-theme-purple/50 focus:border-transparent transition-all duration-300;
+  }
+  
+  .dark .contact-input {
+    @apply bg-white/5 border-white/10 text-white;
+  }
+  
+  .light .contact-input {
+    @apply bg-white border-gray-300 text-gray-900;
   }
 
   .floating-particle {
@@ -109,20 +154,35 @@
   }
 
   .back-to-top {
-    @apply fixed bottom-6 right-6 p-3 bg-theme-purple text-white rounded-full shadow-lg opacity-0 invisible transition-all duration-300 z-50 hover:bg-theme-purple-light;
+    @apply fixed bottom-6 right-6 p-3 bg-theme-purple text-white rounded-full shadow-lg transition-all duration-300 z-50 hover:bg-theme-purple-light opacity-0 invisible;
   }
 
-  /* Fix: Changed the way we handle the visible state to avoid circular dependency */
   .back-to-top.visible {
     opacity: 1;
     visibility: visible;
   }
 
   .project-card {
-    @apply glass-card p-6 transition-all duration-500 hover:transform hover:scale-[1.02] hover:translate-y-[-8px] hover:shadow-xl hover:shadow-theme-purple/30;
+    @apply glass-card p-6 transition-all duration-500 hover:transform hover:scale-[1.02] hover:translate-y-[-8px];
+  }
+  
+  .dark .project-card:hover {
+    @apply hover:shadow-xl hover:shadow-theme-purple/30;
+  }
+  
+  .light .project-card:hover {
+    @apply hover:shadow-xl hover:shadow-theme-purple/20;
   }
 
   .social-icon {
-    @apply p-3 bg-white/5 text-white rounded-full hover:bg-theme-purple transition-colors duration-300;
+    @apply p-3 rounded-full transition-colors duration-300;
+  }
+  
+  .dark .social-icon {
+    @apply bg-white/5 text-white hover:bg-theme-purple;
+  }
+  
+  .light .social-icon {
+    @apply bg-gray-100 text-gray-700 hover:bg-theme-purple hover:text-white;
   }
 }

@@ -2,6 +2,7 @@
 import { useInView } from 'react-intersection-observer';
 import { cn } from '@/lib/utils';
 import { GraduationCap } from 'lucide-react';
+import { useTheme } from '@/contexts/ThemeContext';
 
 const education = [
   {
@@ -33,9 +34,11 @@ const EducationSection = () => {
     triggerOnce: true,
     threshold: 0.1,
   });
+  
+  const { theme } = useTheme();
 
   return (
-    <section id="education" className="py-20 bg-gray-900/50">
+    <section id="education" className={theme === 'dark' ? "py-20 bg-gray-900/50" : "py-20 bg-gray-100"}>
       <div 
         ref={ref}
         className={cn(
@@ -61,11 +64,15 @@ const EducationSection = () => {
               }}
             >
               <div className="transition-all duration-300 group-hover:transform group-hover:translate-y-[-8px]">
-                <h3 className="text-xl font-semibold text-white mb-2">{edu.degree}</h3>
+                <h3 className={`text-xl font-semibold mb-2 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
+                  {edu.degree}
+                </h3>
                 <p className="text-theme-purple mb-2">{edu.institution}</p>
-                <p className="text-gray-400 text-sm mb-4">{edu.period} • {edu.location}</p>
+                <p className={`text-sm mb-4 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+                  {edu.period} • {edu.location}
+                </p>
                 
-                <ul className="list-disc list-inside text-gray-300 text-sm space-y-1">
+                <ul className={`list-disc list-inside text-sm space-y-1 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
                   {edu.achievements.map((achievement, i) => (
                     <li key={i}>{achievement}</li>
                   ))}
